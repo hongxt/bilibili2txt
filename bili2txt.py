@@ -201,10 +201,11 @@ whisper_model = None
 
 if __name__ == "__main__":
     # 0.加载模型   tiny, base, small, medium, large, turbo
-    load_whisper("tiny")
+    model_type = 'small'
+    load_whisper(model_type)
 
     # 1.视频下载
-    url ='https://www.bilibili.com/video/BV1QB421k7be/?spm_id_from=333.1387.homepage.video_card.click&vd_source=da5da337b290a8d82670403bf1bf31b7'
+    url ='https://www.bilibili.com/video/BV1ZqfXYeEEb/?spm_id_from=333.1387.upload.video_card.click&vd_source=da5da337b290a8d82670403bf1bf31b7'
     v_folder = 'bilibili_video'
     video_name = 'test'
     title = download_video_url(url,v_folder,video_name)
@@ -218,5 +219,5 @@ if __name__ == "__main__":
     # 3.语音转文字
     text_folder = "bilibili_text"
     text_name = "chinese"
-    run_analysis(slice_folder_name, model="small", prompt="以下是普通话的句子。", output_folder=text_folder, output_filename=text_name,title=title)
+    run_analysis(slice_folder_name, model=model_type, prompt="以下是普通话的句子。", output_folder=text_folder, output_filename=text_name,title=title)
     print("转换完成！")
